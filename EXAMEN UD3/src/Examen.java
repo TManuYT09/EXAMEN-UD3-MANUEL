@@ -9,7 +9,7 @@ public class Examen {
         System.out.println("*** BIENVENIDO AL BINGO DEL CASINO CANTÁBRICO ***");
 
         int num_bolas= random.nextInt(10,40);
-        int resultado[]=new int[num_bolas];
+        Integer resultado[]=new Integer[num_bolas];
 
         for (int i = 0; i < num_bolas; i++) {
             resultado[i]=random.nextInt(1,90);
@@ -19,7 +19,7 @@ public class Examen {
         System.out.println(num_bolas+ " bolas extraídas hasta ahora: "+ Arrays.toString(resultado));
 
         System.out.println("*** Introduce los datos de tu cartón ***");
-        int carton[][]=new int[3][3];
+        Integer carton[][]=new Integer[3][3];
         boolean comp=false;
         for (int i = 0; i < carton.length; i++) {
             System.out.println("Fila "+ (i+1));
@@ -39,6 +39,7 @@ public class Examen {
         }
 
         if (comp){
+            comp=false;
             System.out.println("Datos del cartón introducido:");
             for (int i = 0; i < carton.length; i++) {
                 for (int j = 0; j < carton[i].length; j++) {
@@ -46,8 +47,20 @@ public class Examen {
                 }
                 System.out.print("\n");
             }
-            System.out.println(" ");
             System.out.println("\nPREMIO");
+            for (int i = 0; i < carton.length; i++) {
+                for (int j = 0; j < carton[i].length; j++) {
+                    if (Arrays.asList(resultado).contains(carton[i][j])){
+                        System.out.println("HAY BINGO!!");
+                        comp=true;
+                        break;
+                    }
+                }
+            }
+            if (!comp){
+                System.out.println("No hay BINGO.");
+                
+            }
         }
 
     }
